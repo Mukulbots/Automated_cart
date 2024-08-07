@@ -1,0 +1,25 @@
+<launch>
+    <arg name="model" default="$(find car)/urdf/car.urdf.xacro"/>
+    <!-- <arg ="gmapping" default="$(find car)/arg>gmapping/slam_gmapping"/> -->
+
+    <include file="$(find car)/launch/diffdrive.launch">
+        <arg name="model" value="$(arg model)" />
+    </include>
+
+    <node pkg="gmapping" name="slam_gmapping" type="slam_gmapping" output ="screen" >
+        <param name="scan"      value="scan"/>
+        <param name="odom_frame" value="odom"/>
+        <param name="base_frame" value="base_link"/>
+    </node>
+<!-- 
+    <node name="Teleop" pkg="bringup" type="enable" respawn="false" output="screen"/>
+    
+    <node name="Dynamic" pkg="bringup" type="dynamic_link_camera" respawn="false" output="screen"/>
+
+    <node name="Localization" pkg="bringup" type="localize" respawn="false" output="screen"/>
+
+    <node name="map_server" pkg="map_server" type="map_server" arg="$(find bringup)/maps/"/> -->
+
+    <rosparam file="$(find car)/config/steering.yaml" command="load"/>
+
+</launch>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<package format="2">
+  <name>car</name>
+  <version>0.0.0</version>
+  <description>The car package</description>
+
+
+  <maintainer email="mukul@todo.todo">mukul</maintainer>
+
+
+  <license>TODO</license>
+
+
+ 
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>ackermann_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>tf2_geometry_msgs</build_depend>
+  <build_depend>tf2_ros</build_depend>
+  <build_depend>gmapping</build_depend>
+  <build_depend>robot_state_publisher</build_depend>
+  <build_depend>joint_state_publisher</build_depend>
+  <build_depend>controller_manager</build_depend>
+  <build_depend>
+    roscpp
+    joint_trajectory_controller
+    # Add other dependencies if needed (e.g., hardware interface)
+  </build_depend>
+  <build_export_depend>ackermann_msgs</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>sensor_msgs</build_export_depend>
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>tf2_ros</build_export_depend>
+  <build_export_depend>controller_manager</build_export_depend>
+  <build_export_depend>robot_state_publisher</build_export_depend>
+  <build_export_depend>joint_state_publisher</build_export_depend>
+  <exec_depend>ackermann_msgs</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>tf2_geometry_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>diff_drive_controller</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_ros_control</exec_depend>
+  <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>position_controllers</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rqt_robot_steering</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>urdf_tutorial</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>gmapping</exec_depend>cd ca
+  <build_depend>
+    robot_state_publisher
+    joint_trajectory_action
+  </build_depend>
+
+
+ 
+  <export>
+    <joint_controller plugin="${plugin}" class="my_robot_controllers::MySteeringController" />
+  </export>
+</package>

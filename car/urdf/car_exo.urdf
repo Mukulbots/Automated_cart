@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="car">
+  <link name="world"/>
+  <joint name="base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0"/>
+  </joint>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="30" />
+      <inertia
+        ixx="13.799"
+        ixy="1.2776E-06"
+        ixz="-5.4236E-07"
+        iyy="14.328"
+        iyz="0.021626"
+        izz="4.8956" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/base_link.stl" />
+      </geometry>
+      <material
+        name="iron">
+        <color
+          rgba="1 1 1 0.4" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/base_link.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="rWheel">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="0.0033492"
+        ixy="-2.1115E-09"
+        ixz="8.2422E-10"
+        iyy="0.0033491"
+        iyz="2.1116E-12"
+        izz="0.0061933" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/wheel.stl" />
+      </geometry>
+      <material
+        name="rubber">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/wheel.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rWheelJoint"
+    type="revolute">
+    <origin
+      xyz="-0.515 0.231972 0.044"
+      rpy="0 1.5708 0" />
+    <parent
+      link="0 0 1.57079" />
+    <child
+      link="rWheel" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1E+86"
+      upper="1E+86"
+      effort="200"
+      velocity="3000" />
+  </joint>
+  <link
+    name="lWheel">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="0.0033492"
+        ixy="-2.1115E-09"
+        ixz="8.2422E-10"
+        iyy="0.0033491"
+        iyz="2.1116E-12"
+        izz="0.0061933" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/wheel.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/wheel.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lWheelJoint"
+    type="revolute">
+    <origin
+      xyz="-0.515 -0.231972 0.044"
+      rpy="0 0 1.57079" />
+    <parent
+      link="base_link" />
+    <child
+      link="lWheel" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1E+80"
+      upper="1E+80"
+      effort="200"
+      velocity="3000" />
+  </joint>
+  <link
+    name="lidar">
+    <inertial>
+      <origin
+        xyz="0 0.037797 -1.1102E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.11564" />
+      <inertia
+        ixx="4.3339E-05"
+        ixy="-1.5818E-38"
+        ixz="-2.0993E-37"
+        iyy="4.8283E-05"
+        iyz="-1.5753E-20"
+        izz="4.3339E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/wheel.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.10196 0.10196 0.10196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/wheel.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidarJoint"
+    type="revolute">
+    <origin
+      xyz="0 -0.66 1.0303"
+      rpy="0 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-100000000000"
+      upper="1E+28"
+      effort="200"
+      velocity="3000" />
+  </joint>
+  <link
+    name="steering">
+    <inertial>
+      <origin
+        xyz="-3.3084E-06 3.1923E-05 0.084264"
+        rpy="0 0 0" />
+      <mass
+        value="0.33648" />
+      <inertia
+        ixx="0.0023809"
+        ixy="2.2288E-08"
+        ixz="-2.8298E-08"
+        iyy="0.0022519"
+        iyz="3.1939E-07"
+        izz="0.00020117" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/steering.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/steering.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="steeringJoint"
+    type="revolute">
+    <origin
+      xyz="0.7242695 0 0.20"
+      rpy="1.5708 1.5708 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="steering" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3E+73"
+      upper="3E+73"
+      effort="200"
+      velocity="3000" />
+  </joint>
+  <link
+    name="fWheel">
+    <inertial>
+      <origin
+        xyz="0.035 -1.2831E-06 -5.0403E-08"
+        rpy="0 0 0" />
+      <mass
+        value="1.3795" />
+      <inertia
+        ixx="0.0061933"
+        ixy="2.1116E-12"
+        ixz="8.2422E-10"
+        iyy="0.0033491"
+        iyz="-2.1115E-09"
+        izz="0.0033492" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/wheel.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/wheel.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fWheelJoint"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.185"
+      rpy="0 0 1.57079" />
+    <parent
+      link="steering" />
+    <child
+      link="fWheel" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1E+86"
+      upper="-3E+73"
+      effort="200"
+      velocity="3000" />
+  </joint>
+
+  <transmission name="steering_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="steering_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="steeringJoint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="steering_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="steering_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="steeringJoint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="rWheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="rWheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="rWheelJoint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="lWheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="lWheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="lWheelJoint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+  <transmission name="fWheelheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="fWheelheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="fWheelheelJoint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+    <!-- Gazebo plugin for ROS Control -->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+         <robotNamespace>/</robotNamespace>
+       </plugin>
+    </gazebo>
+</robot>

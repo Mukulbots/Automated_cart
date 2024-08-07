@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot name="car" xmlns:xacro="http://ros.org/wiki/xacro">
+    <transmission name = "trans_steering" >
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name = "steeringJoint" >
+            <hadwareInterface>hardware_interface/EffortJointInterface</hadwareInterface>
+        </joint>
+        <actuator name ="steering_act">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name = "trans_drive" >
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name = "fWheelJoint" >
+            <hadwareInterface>hardware_interface/EffortJointInterface</hadwareInterface>
+        </joint>
+        <actuator name ="drive_act">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+</robot>

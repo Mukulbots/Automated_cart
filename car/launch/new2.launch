@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Associate to the robot description parameter, the urdf file that model the robot-->
+    <param name="robot_description" command = "$(find xacro)/xacro --inorder $(find car)/urdf/car.urdf.xacro" />
+
+    <!-- Set teh position in empty world-->
+    <arg name="model" default="car"/>
+    <arg name="x" default="2.0"/>
+    <arg name="y" default="0.5"/>
+    <arg name="z" default="1.0"/>
+
+    <!-- Launch Gezabo world in paused-->
+    <include file = "$(find gazebo_ros)/launch/empty_world.launch" >
+        <arg name="use_sim_time" value="true"/>
+        <arg name="debug" value="false"/>
+        <arg name="gui" value="true"/>
+        <arg name="paused" value="true" />
+
+    </include>   
+
+    <!-- Spawn the robot using the package gazebo_ros-->
+    <node name="spawn_the_robot" pkg="gazebo_ros" type="spawn_model"  output="screen" args="-urdf -param robot_description -model car -x $(arg x) -y $(arg y) -z $(arg z)" />
+    
+    <!--load controller-->
+
+    <rosparam command="load" file="$(find car)/config/new.yaml"/>
+
+    <!-- load node controller manager-->
+    <node name= "controller_spawner" pkg= "cotroller_manager" type ="spawner" output= "screen" respawn= "false" args= "joint_state_controller steering_position_controller drive_position_controller --timeout 60" />
+
+
+    <!-- convert joint states to TF transform for rviz and rqt-->
+     <node name= "robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+            output="screen" respawn="false" ns="/car  ">
+            <remap from="/joint_states" to="/car/joint_states"></remap>
+
+     </node>
+     <!-- <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf"  args="-urdf -model $(arg model) -x $(arg x) -y $(arg y) -z $(arg z) -param robot_description" /> -->
+</launch>
